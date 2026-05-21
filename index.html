@@ -23,7 +23,7 @@
             overflow-x: hidden;
         }
 
-        .knap-container { display: flex; gap: 20px; z-index: 10; margin-top: 200px; }
+        .knap-container { display: flex; gap: 20px; z-index: 10; margin-top: 250px; }
 
         .knap {
             padding: 1rem 2rem;
@@ -48,15 +48,15 @@
         }
 
         #video-container {
-            display: none; /* Standard skjult */
+            display: none;
             width: 80%;
             max-width: 700px;
-            margin-top: 20px;
+            margin-bottom: 50px;
             border-radius: 16px;
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            animation: fadeIn 0.5s ease;
+            animation: fadeIn 0.4s ease;
         }
 
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -93,7 +93,7 @@
 
     <div class="knap-container">
         <a href="https://discord.gg/8bpU9VMWhM" target="_blank" class="knap">JOIN DISCORD</a>
-        <button class="knap" onclick="toggleVideo()">SE TRAILER</button>
+        <button id="trailer-btn" class="knap" onclick="toggleVideo()">SE TRAILER</button>
     </div>
 
     <div id="video-container">
@@ -106,12 +106,15 @@
         function toggleVideo() {
             const container = document.getElementById('video-container');
             const video = document.getElementById('trailer-video');
+            const btn = document.getElementById('trailer-btn');
             
             if (container.style.display === 'block') {
                 container.style.display = 'none';
-                video.pause(); // Stopper videoen, når den skjules
+                video.pause();
+                btn.innerText = "SE TRAILER";
             } else {
                 container.style.display = 'block';
+                btn.innerText = "SKJUL TRAILER";
             }
         }
     </script>
